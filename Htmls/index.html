@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>在线NODEJS IDE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <style type="text/css">
+    .InputScriptBox
+    {
+      width: 80%;
+      margin-left: 10px;
+      margin-right: 10px;
+      height:400px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fliud">
+    <div class="hero-unit">
+      <h1>Online IDE For NodeJS</h1>
+    </div>
+    <div class="row-fliud">   
+      <label class="col-md-2">NodeSiteName:</label>
+      <div class="col-md-10">
+        <input type="text" value = "Input your Site Name here." id = 'siteNameBox'></input>
+      </div>
+    </div>
+    <div class="row-fliud">
+      <div class="col-md-12">
+        <textarea class="InputScriptBox" id='scriptBox'>Input javascript here</textarea>
+      </div>
+    </div>
+    <div class="row-fliud">
+      <input type="button" value="Upload" onclick="PostScripts()"></input>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      function PostScripts(){
+        $.ajax({
+          type: 'POST',
+          url: 'http://localhost:8888',
+          data:JSON.stringify({
+            siteName: $('#siteNameBox').val(),
+            scriptText:$('#scriptBox').val()
+          }),
+          success: function(data,state){
+            alert(state);
+          },
+          dataType:'json'
+        });
+      }
+
+    </script>
+  </body>
+  </html>

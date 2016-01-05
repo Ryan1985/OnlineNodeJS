@@ -24,12 +24,17 @@
     </div>
     <div class="row-fliud">   
       <label class="col-md-2">NodeSiteName:</label>
-      <div class="col-md-10">
+      <div class="col-md-4">
         <input type="text" value = "Input your Site Name here." id = 'siteNameBox'></input>
+      </div>  
+      <label class="col-md-2">FileName:</label>
+      <div class="col-md-4">
+        <input type="text" value = "Input your File Name here." id = 'fileNameBox'></input>
       </div>
     </div>
     <div class="row-fliud">
-      <div class="col-md-12">
+      <label class="col-md-2">SourceCode:</label>
+      <div class="col-md-10">
         <textarea class="InputScriptBox" id='scriptBox'>Input javascript here</textarea>
       </div>
     </div>
@@ -45,6 +50,7 @@
           url: 'http://localhost:8888',
           data:JSON.stringify({
             siteName: $('#siteNameBox').val(),
+            fileName: $('#fileNameBox').val(),
             scriptText:$('#scriptBox').val()
           }),
           success: function(data,state){

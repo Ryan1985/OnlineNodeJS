@@ -21,6 +21,11 @@ var route = function(request,response){
 			routePost(request,response,postData);
 		});
 	}
+	else{
+		response.writeHead(404,{"content-Type":"text/plain"});
+		response.write("Can't find the route for method :"+request.method );
+		response.end();
+	}
 //	else if (request.method=='Put'){
 //		console.log('route into function routePut');
 //		routePut(request,response);
@@ -29,11 +34,6 @@ var route = function(request,response){
 //		console.log('route into function routeDelete');
 //		routeDelete(request,response);
 //	}
-else{
-	response.writeHead(404,{"content-Type":"text/plain"});
-	response.write("Can't find the route for method :"+request.method );
-	response.end();
-}
 }
 
 
